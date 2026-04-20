@@ -48,11 +48,16 @@ function updateWinnersDisplay() {
   }
 
   winnersList.innerHTML = "";
-  const classes = ["first", "second", "third"];
 
-  state.winners.forEach((winner, index) => {
+  state.winners.forEach((winner) => {
     const div = document.createElement("div");
-    div.className = `winner-item ${classes[index]}`;
+    // Assign class based on actual prize level, not draw order
+    let prizeClass = "";
+    if (winner.prize.includes("1º")) prizeClass = "first";
+    else if (winner.prize.includes("2º")) prizeClass = "second";
+    else if (winner.prize.includes("3º")) prizeClass = "third";
+
+    div.className = `winner-item ${prizeClass}`;
     div.innerHTML = `
             <span class="winner-ticket">#${winner.ticketNumber}</span>
             <span class="winner-prize">${winner.prize}</span>
