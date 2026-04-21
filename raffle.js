@@ -101,6 +101,7 @@ function animateSelection(callback) {
   const duration = 9000; // 9 seconds
   const startTime = Date.now();
   let lastHighlighted = null;
+  const currentNumberDisplay = document.getElementById("current-number");
 
   function animate() {
     const elapsed = Date.now() - startTime;
@@ -114,7 +115,11 @@ function animateSelection(callback) {
     if (progress >= 1) {
       // Animation complete, select winner
       const winner = getRandomTicket(availableTickets);
-      callback(winner);
+      currentNumberDisplay.textContent = `#${winner}`;
+      setTimeout(() => {
+        currentNumberDisplay.textContent = "?";
+        callback(winner);
+      }, 500);
       return;
     }
 
@@ -131,6 +136,8 @@ function animateSelection(callback) {
     if (ticketElement) {
       ticketElement.classList.add("highlight");
       lastHighlighted = ticketElement;
+      // Update current number display
+      currentNumberDisplay.textContent = `#${randomTicket}`;
     }
 
     setTimeout(() => requestAnimationFrame(animate), delay);

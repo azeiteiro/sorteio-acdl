@@ -153,6 +153,18 @@ h3 {
   cursor: not-allowed;
 }
 
+.current-number {
+  margin-top: 20px;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .prize-status {
   margin-top: 15px;
   font-size: 1.1rem;
