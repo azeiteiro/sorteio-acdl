@@ -283,7 +283,7 @@ h3 {
   font-size: 1.8rem;
 }
 
-.modal-ticket {
+.winning-ticket {
   font-size: 5rem;
   font-weight: bold;
   color: #ffd700;
@@ -291,10 +291,30 @@ h3 {
   margin: 20px 0;
 }
 
-.modal-prize {
+.winning-name {
   font-size: 2rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 20px;
+}
+
+.prize-won {
+  font-size: 1.5rem;
   color: #4a5568;
   margin-bottom: 30px;
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.close-button:hover {
+  color: #4a5568;
 }
 
 .modal-close {
@@ -341,11 +361,11 @@ h3 {
     font-size: 0.9rem;
   }
 
-  .modal-ticket {
+  .winning-ticket {
     font-size: 3.5rem;
   }
 
-  .modal-prize {
+  .prize-won {
     font-size: 1.5rem;
   }
 }
