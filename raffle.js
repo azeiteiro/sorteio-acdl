@@ -8,6 +8,7 @@ const state = {
   winners: [],
   currentPrize: 0,
   isAnimating: false,
+  recordingMode: false,
 };
 
 // ==================== UTILITIES ====================
@@ -97,11 +98,29 @@ function showWinnerModal(ticketNumber, prize) {
   modalName.textContent = state.soldTicketsObject[ticketNumber];
   modalPrize.textContent = prize;
   modal.classList.add("show");
+
+  // Auto-close in recording mode (except for last prize)
+  if (state.recordingMode && state.currentPrize < state.prizeDescriptions.length) {
+    setTimeout(() => closeModal(), 2500);
+  }
 }
 
 function closeModal() {
   const modal = document.getElementById("winner-modal");
   modal.classList.remove("show");
+}
+
+function toggleRecordingMode() {
+  state.recordingMode = !state.recordingMode;
+  const indicator = document.getElementById("recording-indicator");
+
+  if (state.recordingMode) {
+    document.body.classList.add("recording-mode");
+    indicator.classList.remove("hidden");
+  } else {
+    document.body.classList.remove("recording-mode");
+    indicator.classList.add("hidden");
+  }
 }
 
 // ==================== ANIMATION ====================
@@ -112,7 +131,7 @@ function animateSelection(callback) {
     return;
   }
 
-  const duration = 9000; // 9 seconds
+  const duration = state.recordingMode ? 4000 : 9000; // 4s in recording mode, 9s normal
   const startTime = Date.now();
   let lastHighlighted = null;
   const currentNumberDisplay = document.getElementById("current-number");
@@ -239,6 +258,9 @@ function init() {
   document.getElementById("winner-modal").addEventListener("click", (e) => {
     if (e.target.id === "winner-modal") closeModal();
   });
+  document
+    .getElementById("recording-toggle")
+    .addEventListener("change", toggleRecordingMode);
 }
 
 // Start the app
