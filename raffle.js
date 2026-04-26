@@ -11,6 +11,17 @@ const state = {
 };
 
 // ==================== UTILITIES ====================
+function updateClock() {
+  const clockEl = document.getElementById("live-clock");
+  if (!clockEl) return;
+  const now = new Date();
+  const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const timeOpts = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  const dateStr = now.toLocaleDateString('pt-PT', dateOpts);
+  const timeStr = now.toLocaleTimeString('pt-PT', timeOpts);
+  clockEl.textContent = `${dateStr} • ${timeStr}`;
+}
+
 function getAvailableTickets() {
   const wonTickets = state.winners.map((w) => w.ticketNumber);
   return state.soldTickets.filter((t) => !wonTickets.includes(t));
@@ -209,6 +220,9 @@ function handleDrawClick() {
 
 // ==================== INITIALIZATION ====================
 function init() {
+  updateClock();
+  setInterval(updateClock, 1000);
+
   createTicketGrid();
   updateWinnersDisplay();
   updatePrizeStatus();
