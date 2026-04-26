@@ -2,7 +2,8 @@ import { soldTickets, prizeDescriptions } from "./tickets.js";
 
 // ==================== STATE ====================
 const state = {
-  soldTickets,
+  soldTicketsObject: soldTickets,
+  soldTickets: Object.keys(soldTickets).map(Number),
   prizeDescriptions,
   winners: [],
   currentPrize: 0,
@@ -59,7 +60,7 @@ function updateWinnersDisplay() {
 
     div.className = `winner-item ${prizeClass}`;
     div.innerHTML = `
-            <span class="winner-ticket">#${winner.ticketNumber}</span>
+            <span class="winner-ticket">#${winner.ticketNumber} - ${state.soldTicketsObject[winner.ticketNumber]}</span>
             <span class="winner-prize">${winner.prize}</span>
         `;
     winnersList.appendChild(div);
@@ -78,9 +79,11 @@ function updatePrizeStatus() {
 function showWinnerModal(ticketNumber, prize) {
   const modal = document.getElementById("winner-modal");
   const modalTicket = document.getElementById("modal-ticket");
+  const modalName = document.getElementById("modal-name");
   const modalPrize = document.getElementById("modal-prize");
 
   modalTicket.textContent = `#${ticketNumber}`;
+  modalName.textContent = state.soldTicketsObject[ticketNumber];
   modalPrize.textContent = prize;
   modal.classList.add("show");
 }
