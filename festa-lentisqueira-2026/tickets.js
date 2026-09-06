@@ -7,6 +7,7 @@ export const contests = [
   {
     slug: "fio-de-prata",
     name: "Fio de Prata",
+    logo: "assets/logo_fio_prata.png",
     soldTickets: {
       1: "Noémia",
       2: "Pedro Fernandes",
@@ -48,6 +49,7 @@ export const contests = [
   {
     slug: "clifebres",
     name: "Clifebres",
+    logo: "assets/logo_clifebres.png",
     soldTickets: {
       1: "Dulce Curto",
       2: "João Alcides",
@@ -71,6 +73,7 @@ export const contests = [
   {
     slug: "pascoas",
     name: "Páscoas",
+    logo: "assets/logo_pascoas.png",
     soldTickets: {
       4: "Eliana Neves",
       5: "Fernando Troca",

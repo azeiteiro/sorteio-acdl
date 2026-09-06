@@ -183,11 +183,23 @@ body.recording-mode .control-section {
 }
 
 .contest-heading {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   color: white;
   font-size: 1.8rem;
   margin-bottom: 15px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.contest-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
 }
 
 /* Winners Summary */
@@ -206,6 +218,14 @@ body.recording-mode .control-section {
   text-align: center;
   min-width: 160px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary-logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0 auto 6px auto;
 }
 
 .summary-name {
@@ -589,6 +609,16 @@ body.recording-mode .control-section {
   .summary-item {
     min-width: 120px;
     padding: 10px 14px;
+  }
+
+  .summary-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .contest-logo {
+    width: 36px;
+    height: 36px;
   }
 
   .carousel-nav-btn {

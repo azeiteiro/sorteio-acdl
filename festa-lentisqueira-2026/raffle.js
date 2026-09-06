@@ -4,6 +4,7 @@ import { contests as contestsConfig } from "./tickets.js";
 const contests = contestsConfig.map((c) => ({
   slug: c.slug,
   name: c.name,
+  logo: c.logo,
   soldTicketsObject: c.soldTickets,
   ticketNumbers: Object.keys(c.soldTickets).map(Number),
   winner: null, // { ticketNumber } once drawn
@@ -248,6 +249,7 @@ function renderWinnersSummary() {
     .map(
       (contest) => `
     <div class="summary-item">
+      <img src="${contest.logo}" alt="${contest.name}" class="summary-logo" />
       <span class="summary-name">${contest.name}</span>
       <span id="summary-winner-${contest.slug}" class="summary-winner">—</span>
     </div>
@@ -260,7 +262,10 @@ function renderContestSection(contest) {
   const section = document.createElement("div");
   section.className = "contest-section";
   section.innerHTML = `
-    <h2 class="contest-heading">🎁 ${contest.name}</h2>
+    <h2 class="contest-heading">
+      <img src="${contest.logo}" alt="${contest.name}" class="contest-logo" />
+      <span>${contest.name}</span>
+    </h2>
 
     <div class="winners-section">
       <h2>🏆 Vencedor</h2>
